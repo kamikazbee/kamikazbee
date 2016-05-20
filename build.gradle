@@ -4,6 +4,10 @@ version '1.0-SNAPSHOT'
 apply plugin: 'groovy'
 apply plugin: 'jacoco'
 
+plugins {
+    id "com.github.kt3k.coveralls" version "2.6.3"
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
