@@ -1,5 +1,7 @@
 # kamikazbee
 
+[![Build Status](https://travis-ci.org/kamikazbee/kamikazbee.svg?branch=master)](https://travis-ci.org/kamikazbee/kamikazbee) [![Coverage Status](https://coveralls.io/repos/github/kamikazbee/kamikazbee/badge.svg?branch=master)](https://coveralls.io/github/kamikazbee/kamikazbee?branch=master)
+
 Kamikazbee is a java 8 library that serves a single purpose! Validate java objects.
 
 The core object of the library is the `Validator` which takes a list of validation rules that should be applied
