@@ -1,12 +1,12 @@
-group 'com.github'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'groovy'
-apply plugin: 'jacoco'
-
 plugins {
     id "com.github.kt3k.coveralls" version "2.6.3"
 }
+
+group 'com.github'
+version '0.1.0'
+
+apply plugin: 'groovy'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
