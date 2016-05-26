@@ -14,26 +14,26 @@
  * limitations under the License.
  */
 
-package com.github.kamikazbee.results;
+package com.github.kamikazbee;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ValidationResult {
+class ValidationResult {
 
     private Map<String, Object> errors = new HashMap<>();
 
-    public Map<String, Object> getErrors() {
+    Map<String, Object> getErrors() {
         return errors;
     }
 
-    public boolean isValid() {
+    boolean isValid() {
         return errors.isEmpty();
     }
 
-    public void add(ValidationResult nested, String field) {
+    void add(ValidationResult nested, String field) {
         errors.compute(field, (s, o) -> {
            if (o == null) {
                return nested.getErrors();
@@ -44,7 +44,7 @@ public class ValidationResult {
         });
     }
 
-    public void add(com.github.kamikazbee.results.RuleResponse response, String field) {
+    void add(RuleResponse response, String field) {
         errors.compute(field, (s, o) -> {
             if (o == null) {
                 List<String> l = new ArrayList<>(1);

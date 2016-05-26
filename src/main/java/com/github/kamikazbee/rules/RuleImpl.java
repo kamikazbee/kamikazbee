@@ -16,7 +16,7 @@
 
 package com.github.kamikazbee.rules;
 
-import com.github.kamikazbee.results.RuleResponse;
+import com.github.kamikazbee.RuleResponse;
 
 import java.util.function.Predicate;
 
@@ -33,6 +33,11 @@ abstract class RuleImpl<T, R extends Rule> implements Rule<T, R> {
         return (R) this;
     }
 
+    /**
+     * Provides the validation to be performed in order to determine whether the value is valid
+     * @param validation a {@link Predicate} that is the contract to when a value is valid
+     * @return the Rule
+     */
     protected R validation(Predicate<T> validation) {
         this.validation = validation;
         return (R) this;
@@ -59,18 +64,32 @@ abstract class RuleImpl<T, R extends Rule> implements Rule<T, R> {
         }
     }
 
+    /**
+     * Determine whether validation should be skipped for the given value
+     * @param value the object for which the validation will take place
+     * @return boolean denoting whether validation should be skipped
+     */
     protected boolean skipValidation(T value) {
         return optional && value == null;
     }
 
+    @Override
     public boolean isBlocking() {
         return blocking;
     }
 
+    /**
+     * Get the error message
+     * @return String with the error message for that Rule
+     */
     protected String getMessage() {
         return message;
     }
 
+    /**
+     * Get the validation contract
+     * @return @{link Predicate} with the rule contract
+     */
     protected Predicate<T> getValidation() {
         return validation;
     }

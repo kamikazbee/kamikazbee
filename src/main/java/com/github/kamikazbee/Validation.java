@@ -20,6 +20,9 @@ import com.github.kamikazbee.rules.Rule;
 
 import java.util.function.Function;
 
+/**
+ * Object denoting a specific validation that should take place
+ */
 public class Validation {
 
     private Rule rule;
@@ -27,6 +30,12 @@ public class Validation {
     private Validator validator;
     private String field = "base";
 
+    /**
+     * Create a new Validation for an object
+     * @param rule Rule that should be applied
+     * @param valueProvider Function that returns the value that should be validated
+     * @param field the field in which the error will be assigned in Rule validation fails
+     */
     public Validation(Rule rule, Function valueProvider, String field) {
         this.rule = rule;
         this.valueProvider = valueProvider;
@@ -35,34 +44,45 @@ public class Validation {
         }
     }
 
+    /**
+     * Create a new Validation for an object where the error (if any) will be assigned to the "base" field
+     * @param rule Rule that should be applied
+     * @param valueProvider Function that returns the value that should be validated
+     */
     public Validation(Rule rule, Function valueProvider) {
         this.rule = rule;
         this.valueProvider = valueProvider;
     }
 
+    /**
+     * Create a new Validation that will be applied to a nested object of the object to be validated
+     * @param validator Validator that will be used to validate the nested resource
+     * @param valueProvider Function that returns the value that should be validated
+     * @param field the field in which the error will be assigned in Rule validation fails
+     */
     public Validation(Validator validator, Function valueProvider, String field) {
         this.validator = validator;
         this.valueProvider = valueProvider;
         this.field = field;
     }
 
-    public boolean isNested() {
+    boolean isNested() {
         return validator != null;
     }
 
-    public Rule getRule() {
+    Rule getRule() {
         return rule;
     }
 
-    public Function getValueProvider() {
+    Function getValueProvider() {
         return valueProvider;
     }
 
-    public Validator getValidator() {
+    Validator getValidator() {
         return validator;
     }
 
-    public String getField() {
+    String getField() {
         return field;
     }
 

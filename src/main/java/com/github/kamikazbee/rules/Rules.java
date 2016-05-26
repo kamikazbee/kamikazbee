@@ -16,24 +16,47 @@
 
 package com.github.kamikazbee.rules;
 
+/**
+ * Provides shorthands for the default library Rules
+ */
 public class Rules {
 
+    /**
+     * Shorthand to return a new {@link LengthRule} instance
+     * @return a new instance of {@link LengthRule}
+     */
     public static LengthRule length() {
         return new LengthRule();
     }
 
+    /**
+     * Shorthand to return a new {@link EmptyRule} instance
+     * @return a new instance of {@link EmptyRule}
+     */
     public static EmptyRule empty() {
         return new EmptyRule();
     }
 
+    /**
+     * Shorthand to return a new {@link NonNullRule} instance
+     * @return a new instance of {@link NonNullRule}
+     */
     public static NonNullRule nonNull() {
         return new NonNullRule();
     }
 
+    /**
+     * Shorthand to return a new {@link QuantityRule} instance
+     * @return a new instance of {@link QuantityRule}
+     */
     public static QuantityRule quantity() {
         return new QuantityRule();
     }
 
+    /**
+     * Shorthand to return a new {@link RegexRule} instance
+     * @return a new instance of {@link RegexRule}
+     */
     public static RegexRule pattern() {
         return new RegexRule();
     }

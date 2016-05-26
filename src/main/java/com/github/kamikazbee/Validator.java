@@ -16,8 +16,6 @@
 
 package com.github.kamikazbee;
 
-import com.github.kamikazbee.results.RuleResponse;
-import com.github.kamikazbee.results.ValidationResult;
 import com.github.kamikazbee.rules.Rule;
 
 import java.util.*;

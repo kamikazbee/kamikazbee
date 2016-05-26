@@ -14,32 +14,41 @@
  * limitations under the License.
  */
 
-package com.github.kamikazbee.results;
+package com.github.kamikazbee;
 
 public class RuleResponse {
 
     private final String message;
 
-    public RuleResponse(String message) {
+    RuleResponse(String message) {
         this.message = message;
     }
 
-    public String getMessage() {
+    String getMessage() {
         return message;
     }
 
-    public RuleResponse() {
+    RuleResponse() {
         this.message = null;
     }
 
-    public boolean isSuccess() {
+    boolean isSuccess() {
         return message == null;
     }
 
+    /**
+     * Create a success Response
+     * @return Response that is success
+     */
     public static RuleResponse success() {
         return new RuleResponse();
     }
 
+    /**
+     * Create a failure Response
+     * @param message String with the failure message
+     * @return Response that is failure
+     */
     public static RuleResponse failure(String message) {
         return new RuleResponse(message);
     }
