@@ -1,6 +1,6 @@
 # kamikazbee
 
-[![Build Status](https://travis-ci.org/kamikazbee/kamikazbee.svg?branch=master)](https://travis-ci.org/kamikazbee/kamikazbee) [![Coverage Status](https://coveralls.io/repos/github/kamikazbee/kamikazbee/badge.svg?branch=master)](https://coveralls.io/github/kamikazbee/kamikazbee?branch=master)
+[![Build Status](https://travis-ci.org/kamikazbee/kamikazbee.svg?branch=master)](https://travis-ci.org/kamikazbee/kamikazbee) [![Coverage Status](https://coveralls.io/repos/github/kamikazbee/kamikazbee/badge.svg?branch=master)](https://coveralls.io/github/kamikazbee/kamikazbee?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.kamikazbee/kamikazbee/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.kamikazbee/kamikazbee)
 
 Kamikazbee is a java 8 library that serves a single purpose! Validate java objects.
 
@@ -187,4 +187,18 @@ You can then do the following:
 
 ## Download
 
-There are no releases at the moment so you have to build the library manually using the `jar` gradle task.
+We are on [Maven Central](http://search.maven.org/#artifactdetails%7Ccom.github%7Ckamikazbee%7C0.1.0%7Cjar).
+
+**Use with gradle**
+```gradle
+compile 'com.github:kamikazbee:0.1.0'
+```
+
+**Use with maven**
+```xml
+<dependency>
+    <groupId>com.github</groupId>
+    <artifactId>kamikazbee</artifactId>
+    <version>0.1.0</version>
+</dependency>
+```
