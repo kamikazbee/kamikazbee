@@ -88,7 +88,7 @@ abstract class RuleImpl<T, R extends Rule> implements Rule<T, R> {
 
     /**
      * Get the validation contract
-     * @return @{link Predicate} with the rule contract
+     * @return {@link Predicate} with the rule contract
      */
     protected Predicate<T> getValidation() {
         return validation;
