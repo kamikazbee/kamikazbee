@@ -1,6 +1,6 @@
 # kamikazbee
 
-[![Build Status](https://travis-ci.org/kamikazbee/kamikazbee.svg?branch=master)](https://travis-ci.org/kamikazbee/kamikazbee) [![Coverage Status](https://coveralls.io/repos/github/kamikazbee/kamikazbee/badge.svg?branch=master)](https://coveralls.io/github/kamikazbee/kamikazbee?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.kamikazbee/kamikazbee/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.kamikazbee/kamikazbee)
+[![Build Status](https://travis-ci.org/kamikazbee/kamikazbee.svg?branch=master)](https://travis-ci.org/kamikazbee/kamikazbee) [![Coverage Status](https://coveralls.io/repos/github/kamikazbee/kamikazbee/badge.svg?branch=master)](https://coveralls.io/github/kamikazbee/kamikazbee?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github/kamikazbee/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github/kamikazbee)
 
 Kamikazbee is a java 8 library that serves a single purpose! Validate java objects.
 
