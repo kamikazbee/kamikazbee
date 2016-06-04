@@ -34,8 +34,8 @@ class EmailRuleTest extends Specification {
         "email@"                  || false
         "domain.com"              || false
         "email@domain.com"        || true
-        "last.firstl@domain.com"  || true
-        "Cast.Firstl@domain.com"  || true
+        "last.first@domain.com"   || true
+        "Last.First@domain.com"   || true
     }
 
     def "rule message"() {
