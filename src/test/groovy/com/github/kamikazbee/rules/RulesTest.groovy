@@ -78,4 +78,14 @@ class RulesTest extends Specification {
         rule.skipValidation(null)
         !rule.skipValidation("")
     }
+
+    def "Email"() {
+        Rule rule = rules.email()
+
+        expect:
+        rule instanceof EmailRule
+        !rule.isBlocking()
+        rule.skipValidation(null)
+        !rule.skipValidation("")
+    }
 }

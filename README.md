@@ -33,6 +33,9 @@ Validates that a given `Number` matches the given criteria
   * `max` - the max value (inclusive)
   * `exact` - the exact value
 
+### Email
+Validates that a given `String` is a valid email address
+
 ### Pattern
 Validates that a given `String` matches a regex pattern (check [Pattern](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html))
 

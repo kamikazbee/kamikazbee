@@ -61,4 +61,12 @@ public class Rules {
         return new RegexRule();
     }
 
+    /**
+     * Shorthand to return a new {@link EmailRule} instance
+     * @return a new instance of {@link EmailRule}
+     */
+    public static EmailRule email() {
+        return new EmailRule();
+    }
+
 }
