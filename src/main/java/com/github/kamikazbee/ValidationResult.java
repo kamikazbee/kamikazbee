@@ -16,10 +16,7 @@
 
 package com.github.kamikazbee;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class ValidationResult {
 
@@ -34,14 +31,7 @@ class ValidationResult {
     }
 
     void add(ValidationResult nested, String field) {
-        errors.compute(field, (s, o) -> {
-           if (o == null) {
-               return nested.getErrors();
-           } else {
-               return o;
-               // TODO: Handle merging
-           }
-        });
+        errors.compute(field, (s, o) -> o == null ? nested.getErrors() : combine(o, nested.getErrors()));
     }
 
     void add(RuleResponse response, String field) {
@@ -51,10 +41,83 @@ class ValidationResult {
                 l.add(response.getMessage());
                 return l;
             } else {
-                ((List)o).add(response.getMessage());
+                ((List) o).add(response.getMessage());
                 return o;
             }
         });
+    }
+
+    private Map<String, Object> combine(Object existing, Map<String, Object> toBeMerged) {
+        if (existing == null) {
+            return toBeMerged;
+        } else if (existing instanceof List) {
+            return merge(toList(existing), toBeMerged);
+        } else {
+            return merge(toMap(existing), toBeMerged);
+        }
+    }
+
+    private List<String> merge(List<String> l1, List<String> l2) {
+        if (l1 == null) {
+            return l2;
+        } else if (l2 == null) {
+            return l1;
+        }
+
+        Set<String> merged = new HashSet<>(l1);
+        merged.addAll(l2);
+        return new ArrayList<>(merged);
+    }
+
+    private Map<String, Object> merge(Map<String, Object> m1, Map<String, Object> m2) {
+        if (m1 == null) {
+            return m2;
+        } else if (m2 == null) {
+            return m1;
+        }
+
+        Map<String, Object> merged = new HashMap<>();
+
+        Set<String> keys = new HashSet<>(m1.keySet());
+        keys.addAll(m2.keySet());
+
+        keys.forEach(key -> {
+            Object value1 = m1.get(key);
+            Object value2 = m2.get(key);
+
+            if (value1 instanceof List && value2 instanceof Map) {
+                merged.put(key, merge(toList(value1), toMap(value2)));
+            } else if (value1 instanceof Map && value2 instanceof List) {
+                merged.put(key, merge(toList(value2), toMap(value1)));
+            } else if (value1 instanceof List || value2 instanceof List) {
+                merged.put(key, merge(toList(value1), toList(value2)));
+            } else {
+                merged.put(key, merge(toMap(value1), toMap(value2)));
+            }
+        });
+
+        return merged;
+    }
+
+    private Map<String, Object> merge(List<String> list, Map<String, Object> map) {
+        Map<String, Object> merged = new HashMap<>();
+        if (map == null) {
+            merged.put("base", list);
+        } else {
+            merged.putAll(map);
+            if (list != null) {
+                merged.compute("base", (key, value) -> merge(toList(value), list));
+            }
+        }
+        return merged;
+    }
+
+    private List<String> toList(Object obj) {
+        return Optional.ofNullable(obj).map(o -> (List<String>) o).orElse(null);
+    }
+
+    private Map<String, Object> toMap(Object obj) {
+        return Optional.ofNullable(obj).map(o -> (Map<String, Object>) o).orElse(null);
     }
 
 }
